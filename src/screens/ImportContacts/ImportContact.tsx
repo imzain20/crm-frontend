@@ -12,6 +12,7 @@ import CloseIcon from "../../assets/Close icon.svg";
 import { useUserState } from "../../redux/userSlice";
 import { useGetFormByIdQuery } from "../../redux/api";
 import { useUploadCustomerSheetMutation } from "../../redux/crmApis";
+import { useCrmContext } from "../../context/CRMcontext";
 interface CSVRow {
   [key: string]: string;
 }
@@ -19,15 +20,29 @@ interface CSVRow {
 export default function ImportContact() {
   const navigate = useNavigate();
   const userState = useUserState();
-  const { data, refetch } = useGetFormByIdQuery({
-    token: userState.token,
-    formName: "IndividualCustomerForm",
-  });
+  const { mainContactType } = useCrmContext();
+  const { data: individualData, refetch: IndividualDataRefetch } =
+    useGetFormByIdQuery({
+      token: userState.token,
+      formName:
+        mainContactType === "Customer"
+          ? "IndividualCustomerForm"
+          : "IndividualSupplierForm",
+    });
+  const { data: businessData, refetch: businessDataRefetch } =
+    useGetFormByIdQuery({
+      token: userState.token,
+      formName:
+        mainContactType === "Customer"
+          ? "BusinessCustomerForm"
+          : "BusinessSupplierForm",
+    });
   const [checkboxState, setcheckBoxStates] = useState<any>([]);
   const [selectedOptions, setSelectedOptions] = useState<any>([]);
   const [uploadSheet] = useUploadCustomerSheetMutation();
   useEffect(() => {
-    refetch();
+    IndividualDataRefetch();
+    businessDataRefetch();
   }, []);
   const [modalShow, setModalShow] = useState(true);
   const [CreatemodalShow, setCreateModalShow] = useState(false);
@@ -182,7 +197,12 @@ export default function ImportContact() {
                         <option selected disabled={true}>
                           Choose
                         </option>
-                        {data?.data?.formFields?.map((field: any) => (
+                        {individualData?.data?.formFields?.map((field: any) => (
+                          <option key={field._id} value={field._id}>
+                            {field.fieldName}
+                          </option>
+                        ))}
+                        {businessData?.data?.formFields?.map((field: any) => (
                           <option key={field._id} value={field._id}>
                             {field.fieldName}
                           </option>

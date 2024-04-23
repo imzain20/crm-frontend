@@ -32,11 +32,13 @@ interface FormField {
 interface RenderFormProps {
   formfields: FormField[];
   setFieldData: any;
+  fieldData: any[];
 }
 
 const RenderForm: React.FC<RenderFormProps> = ({
   formfields,
   setFieldData,
+  fieldData,
 }) => {
   const handleChange = (
     fieldId: any,
@@ -91,9 +93,13 @@ const RenderForm: React.FC<RenderFormProps> = ({
               <input
                 id="input"
                 type="text"
+                value={
+                  fieldData.find((item) => item.fieldName === field.fieldName)
+                    ?.value || ""
+                }
                 className={`form-control ${styles.inputStyle}`}
                 style={field?.styles}
-                placeholder={"Enter Here"}
+                placeholder="Enter Here"
                 onChange={handleFieldChange(
                   field._id,
                   "input",

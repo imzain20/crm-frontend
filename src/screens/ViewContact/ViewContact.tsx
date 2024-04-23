@@ -8,10 +8,38 @@ import ConnectionsTable from "./components/ConnectionsComponent";
 import ServicesTable from "./components/ServicesComponent";
 import WorkComponent from "./components/WorkComponent";
 import EmailComponent from "./components/EmailComponent";
+import History from "./components/HistoryComponent";
+import FormsTable from "./components/formComponent";
+import BillingComponent from "./components/BillingComponent";
+import { useCreateCommentMutation } from "../../redux/crmApis";
+import { useCrmContext } from "../../context/CRMcontext";
+import { useUserState } from "../../redux/userSlice";
+import { toast } from "react-toastify";
+import CompanyHouse from "./components/CompanyHouse";
+import FilesComponent from "./components/filesComponent";
 export default function ViewContact() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("Information");
-
+  const userState = useUserState();
+  const [comment, setComment] = useState("");
+  const [createComment] = useCreateCommentMutation();
+  const { contactId } = useCrmContext();
+  const handleSubmit = async () => {
+    const result: any = await createComment({
+      bodyData: {
+        contactId: contactId,
+        description: comment,
+        createdBy: userState.user._id,
+      },
+      token: userState.token,
+    });
+    console.log(result?.data?.status);
+    if (result?.data?.status == "200") {
+      toast.success("Comment Created Successfully!", {
+        position: "top-right",
+      });
+    }
+  };
   const Tabs: any = [
     "Information",
     "Connections",
@@ -46,15 +74,25 @@ export default function ViewContact() {
         {activeTab === "Connections" && <ConnectionsTable />}
         {activeTab === "Services" && <ServicesTable />}
         {activeTab === "Emails" && <EmailComponent />}
+        {activeTab === "History" && <History />}
+        {activeTab === "Forms" && <FormsTable />}
+        {activeTab === "Biling" && <BillingComponent />}
+        {activeTab === "Company House" && <CompanyHouse />}
+        {activeTab === "Files" && <FilesComponent />}
       </div>
       <div className={`form-group`}>
         <textarea
           className={`form-control ${styles.textArea}`}
           placeholder="Enter Comments Here"
-        ></textarea>
+          onChange={(e) => {
+            setComment(e.target.value);
+          }}
+        />
       </div>
       <div>
-        <button className={styles.CommentButton}>Comment</button>
+        <button className={styles.CommentButton} onClick={handleSubmit}>
+          Comment
+        </button>
       </div>
     </>
   );

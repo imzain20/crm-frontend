@@ -5,32 +5,32 @@ import useMobile from "../../bootstrap-ui-kit/hooks/useMobile";
 import sortingArrows from "../../assets/svg/Sort arrows.svg";
 import "./service-table.css";
 import { useNavigate } from "react-router-dom";
-const data = [
-  {
-    Supplier: "Name of the contact",
-    name: "Name Surname",
-    status: "Live",
-    type: "Individual",
-    location: "City, Country",
-    email: "email@cinqd.com",
-    phone: "+39 123 123 12 12",
-    corner: "Name Surname",
-  },
-  {
-    Supplier: "ABC Company",
-    name: "Name Surname",
-    status: "Live",
-    type: "Business",
-    location: "City, Country",
-    email: "email@cinqd.com",
-    phone: "+39 123 123 12 12",
-    corner: "Name Surname",
-  },
-];
+import { useEffect, useState } from "react";
+import { useUserState } from "../../redux/userSlice";
+import { Dropdown, DropdownButton } from "react-bootstrap";
+import { useCrmContext } from "../../context/CRMcontext";
+import axios from "axios";
 
 const Table = () => {
+  const userState = useUserState();
+  const [data, setdata] = useState<any>();
+  const { setContactType, setContactId, setMainContactType } = useCrmContext();
   const navigate = useNavigate();
   const isMobile = useMobile();
+  useEffect(() => {
+    axios
+      .get("https://backend-d.cinqd.com/customer/get-supplier-data", {
+        headers: {
+          "auth-token": userState.token,
+        },
+      })
+      .then((res) => {
+        setdata(res.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
   return (
     <div className="d-flex bg-white py-2 CustomTable">
       <div className="bg-white d-flex align-items-center buttonsRow">
@@ -71,7 +71,7 @@ const Table = () => {
               <span className="me-1">+</span>
             </button>
           ) : (
-            <div className="buttonRow">
+            <div className="CreateButtonsRow">
               <button
                 className="btn btn-outline-primary mx-2 px-3 py-2 customButton"
                 onClick={() => {
@@ -95,14 +95,28 @@ const Table = () => {
                 </svg>
                 {"Import"}
               </button>
-              <button
-                className="btn btn-outline-primary px-3 py-2 customButton"
-                onClick={() => {
-                  navigate("/CRM/create-contact");
-                }}
-              >
-                {"Add Contact"}
-              </button>
+              <DropdownButton className="customButton" title={"Add Contact"}>
+                <Dropdown.Item
+                  onClick={() => {
+                    setContactType("Individual");
+                    setMainContactType("Supplier");
+                    navigate("/CRM/create-contact");
+                  }}
+                  eventKey="1"
+                >
+                  Indvidual Contact
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() => {
+                    setContactType("Business");
+                    setMainContactType("Supplier");
+                    navigate("/CRM/create-contact");
+                  }}
+                  eventKey="2"
+                >
+                  Business Contact
+                </Dropdown.Item>
+              </DropdownButton>
             </div>
           )}
         </div>
@@ -113,7 +127,7 @@ const Table = () => {
           <tr>
             <th className="headerText"></th>
             <th className="headerText" scope="col">
-              Supplier <img src={sortingArrows} alt="Sorting Arrows" />
+              Customer <img src={sortingArrows} alt="Sorting Arrows" />
             </th>
             <th className="headerText" scope="col">
               Contact Name
@@ -139,8 +153,8 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item: any) => (
-            <tr key={item.name}>
+          {data?.data.map((item: any, index: number) => (
+            <tr key={index}>
               <td style={{ paddingLeft: "20px" }}>
                 <input
                   className="form-check-input mt-0"
@@ -159,18 +173,59 @@ const Table = () => {
               <td
                 className="tableDataText"
                 onClick={() => {
+                  setContactId(item[0].contactId);
                   navigate("/CRM/view-contact");
                 }}
               >
-                {item.Supplier}
+                {
+                  item.find((value: any) => value.fieldName === "Company Name")
+                    ?.value
+                }
               </td>
-              <td className="tableDataText">{item.name}</td>
-              <td className="tableDataText">{item.status}</td>
-              <td className="tableDataText">{item.type}</td>
-              <td className="tableDataText">{item.location}</td>
-              <td className="tableDataText">{item.email}</td>
-              <td className="tableDataText">{item.phone}</td>
-              <td className="tableDataText">{item.corner}</td>
+              <td className="tableDataText">
+                {
+                  item.find((value: any) => value.fieldName === "First Name")
+                    ?.value
+                }{" "}
+                {
+                  item.find((value: any) => value.fieldName === "Last Name")
+                    ?.value
+                }
+              </td>
+              <td className="tableDataText">
+                {
+                  item.find(
+                    (value: any) => value.fieldName === "Contact Status"
+                  )?.value
+                }
+              </td>
+              <td className="tableDataText">
+                {
+                  item.find((value: any) => value.fieldName === "Contact Type")
+                    ?.value
+                }
+              </td>
+              <td className="tableDataText">
+                {
+                  item.find((value: any) => value.fieldName === "Location")
+                    ?.value
+                }
+              </td>
+              <td className="tableDataText">
+                {item.find((value: any) => value.fieldName === "email")?.value}
+              </td>
+              <td className="tableDataText">
+                {
+                  item.find((value: any) => value.fieldName === "Phone number")
+                    ?.value
+                }
+              </td>
+              <td className="tableDataText">
+                {
+                  item.find((value: any) => value.fieldName === "Contact owner")
+                    ?.value
+                }
+              </td>
             </tr>
           ))}
         </tbody>

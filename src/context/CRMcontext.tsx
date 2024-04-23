@@ -5,6 +5,8 @@ interface MyContextType {
   setContactType: React.Dispatch<React.SetStateAction<string>>;
   contactId: string;
   setContactId: React.Dispatch<React.SetStateAction<string>>;
+  mainContactType: string;
+  setMainContactType: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const crmContext = createContext<MyContextType | undefined>(undefined);
@@ -14,6 +16,7 @@ export const CrmContextProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [contactType, setContactType] = useState("");
   const [contactId, setContactId] = useState("");
+  const [mainContactType, setMainContactType] = useState("");
   return (
     <crmContext.Provider
       value={{
@@ -21,6 +24,8 @@ export const CrmContextProvider: React.FC<{ children: ReactNode }> = ({
         setContactType,
         contactId,
         setContactId,
+        mainContactType,
+        setMainContactType,
       }}
     >
       {children}

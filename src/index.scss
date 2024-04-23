@@ -187,8 +187,12 @@ p {
 .accordion-button:focus {
   box-shadow: none;
 }
+.accordion-button {
+  --bs-border-width: unset;
+}
 .accordion {
   --bs-accordion-active-bg: transparent;
+  --bs-accordion-border-width: unset;
 }
 
 #myCustomAccordion .accordin-header {
@@ -197,4 +201,11 @@ p {
 #myCustomAccordion .accordion-button {
   padding-inline: 0 !important;
   align-items: flex-start;
+}
+#HistoryMainAccordion .accordion-button::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24' fill='none'%3e%3cpath d='M7 10L12.0008 14.58L17 10' stroke='%23228dff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e") !important;
+}
+
+.accordion-button::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 24 24' fill='none'%3e%3cpath d='M7 10L12.0008 14.58L17 10' stroke='%23828282' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e") !important;
 }
