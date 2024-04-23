@@ -7,12 +7,17 @@ import styles from "./Attachment.module.scss";
 import { useState } from "react";
 interface RenderFormProps {
   setAttachment: any;
+  attachments?: any[];
 }
-const Attachments: React.FC<RenderFormProps> = ({ setAttachment }) => {
+const Attachments: React.FC<RenderFormProps> = ({
+  setAttachment,
+  attachments,
+}) => {
   const [files, setfiles] = useState<any>([]);
   function handleFileChange(event: any) {
     let selectedFile = event.target.files[0];
     setfiles([...files, selectedFile]);
+    setAttachment([...files, selectedFile]);
   }
   const handleRemove = (file: any) => {
     setfiles(
@@ -21,8 +26,14 @@ const Attachments: React.FC<RenderFormProps> = ({ setAttachment }) => {
         return item.name !== file.name;
       })
     );
-    console.log(files);
+    setAttachment(
+      files.filter((item: any) => {
+        console.log(item.name, file.name);
+        return item.name !== file.name;
+      })
+    );
   };
+
   return (
     <div>
       <div className={styles.mainContent}>

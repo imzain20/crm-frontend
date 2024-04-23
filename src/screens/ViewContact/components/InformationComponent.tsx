@@ -11,7 +11,7 @@ export default function InformationComponent() {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:83/customer/get-customer-data-by-id/${contactId}`,
+        `https://backend-d.cinqd.com/customer/get-customer-data-by-id/${contactId}`,
         {
           headers: {
             "auth-token": userState.token,

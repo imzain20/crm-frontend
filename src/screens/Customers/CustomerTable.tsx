@@ -14,12 +14,12 @@ import axios from "axios";
 const Table = () => {
   const userState = useUserState();
   const [data, setdata] = useState<any>();
-  const { setContactType, setContactId } = useCrmContext();
+  const { setContactType, setContactId, setMainContactType } = useCrmContext();
   const navigate = useNavigate();
   const isMobile = useMobile();
   useEffect(() => {
     axios
-      .get("http://localhost:83/customer/get-customer-data", {
+      .get("https://backend-d.cinqd.com/customer/get-customer-data", {
         headers: {
           "auth-token": userState.token,
         },
@@ -99,6 +99,7 @@ const Table = () => {
                 <Dropdown.Item
                   onClick={() => {
                     setContactType("Individual");
+                    setMainContactType("Customer");
                     navigate("/CRM/create-contact");
                   }}
                   eventKey="1"
@@ -108,6 +109,7 @@ const Table = () => {
                 <Dropdown.Item
                   onClick={() => {
                     setContactType("Business");
+                    setMainContactType("Customer");
                     navigate("/CRM/create-contact");
                   }}
                   eventKey="2"

@@ -1,0 +1,203 @@
+.mainBody {
+  max-width: 95%;
+  padding-top: 24px;
+}
+.MainHeading {
+  padding-bottom: 16px;
+  margin-bottom: 0;
+}
+
+tbody:hover {
+  cursor: pointer;
+}
+.CustomTable {
+  flex-direction: column;
+  border-radius: 5px;
+  min-height: 60vh;
+}
+.buttonsRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 8px 20px;
+}
+
+.headerText {
+  color: #bdbdbd !important;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  border: unset;
+}
+.tableDataText {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: Roboto;
+  line-height: 16px;
+  color: #4f4f4f !important;
+}
+
+.form-check-input {
+  width: 20px;
+  height: 20px;
+}
+
+.customButton {
+  font-family: Roboto !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 24px !important;
+  letter-spacing: 0.1px !important;
+  text-align: left !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border-radius: 8px !important;
+  padding: 6px 16px 6px 16px;
+  border: 1px solid #228dff;
+}
+
+.CreateButtonsRow {
+  display: flex;
+  flex-direction: row;
+  max-height: 40px;
+}
+.EditButton {
+  color: #228dff !important;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  text-align: left;
+}
+.modalheader {
+  font-family: Open Sans;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0.1px;
+  text-align: left;
+}
+.headerRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 8px 32px;
+}
+
+.subHeader {
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  padding-inline: 32px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  padding-left: 32px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 33%;
+}
+.inputStyle {
+  color: var(--Gray-Black, #333) !important;
+  font-family: Roboto !important;
+  font-size: 12px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 16px !important;
+  letter-spacing: 0.1px !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--Gray-Gray-03, #bdbdbd) !important;
+  background: var(--Gray-White, #fff);
+  min-height: 38px !important;
+}
+.labelStyle {
+  color: var(--Gray-Black, #333);
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  align-self: stretch;
+  margin-bottom: 4px;
+}
+.modalCustom {
+  min-width: 40vw !important;
+}
+.grid {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.TotalRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-inline: 20px;
+  background-color: #228dff;
+  color: #fff;
+  min-height: 4vh;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.TotalText {
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+}
+.description {
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+}
+.DescriptionContainer {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 32px;
+  padding-bottom: 20px;
+}
+.footerButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-inline: 32px;
+  padding-bottom: 24px;
+}
+.SaveButton {
+  padding: 12px 16px 12px 16px;
+  border-radius: 8px;
+  background-color: #228dff;
+  color: #fff;
+  border: unset;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+}
+.cancelButton {
+  padding: 12px 0px 12px 0px;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #228dff;
+  border: unset;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+}

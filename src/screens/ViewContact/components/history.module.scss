@@ -1,0 +1,266 @@
+.buttonsRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 8px 20px;
+}
+.customButton {
+  font-family: Roboto !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 24px !important;
+  letter-spacing: 0.1px !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border-radius: 8px !important;
+  padding: 6px 16px 6px 16px;
+  border: 1px solid #228dff;
+}
+.YearHeader {
+  font-family: Open Sans;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0.1px;
+  color: #228dff;
+}
+.MonthHeader {
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: #228dff;
+}
+.DateHeader {
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  color: #228dff;
+}
+.customAccordionHeader {
+  display: flex;
+  flex-direction: row;
+  width: 95% !important;
+  align-items: center;
+}
+.customDivider {
+  height: 1px;
+  width: 100%;
+  border: 1px solid rgba(209, 231, 255, 1);
+  margin-left: 20px;
+  align-self: center;
+}
+.CommentRow {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 32px;
+}
+.TimeText {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  color: rgba(189, 189, 189, 1);
+}
+.description {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  color: rgba(51, 51, 51, 1) !important;
+}
+.CommentContent {
+  margin-left: 24px;
+}
+.createdBy {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 4px;
+}
+.createdByValue {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  color: #228dff;
+  margin-left: 8px;
+}
+.CommentLength {
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  color: rgba(189, 189, 189, 1);
+  cursor: pointer;
+}
+.commentLengthRow {
+  display: flex;
+  flex-direction: row;
+  margin-top: 4px;
+}
+.AddComment {
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  color: rgba(34, 141, 255, 1);
+  margin-left: 4px;
+  cursor: pointer;
+}
+.modalCustom {
+  min-width: 40vw !important;
+}
+.modalHeader {
+  display: flex;
+  flex-direction: row;
+  padding: 0px 20px;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+.ModalTitle {
+  font-family: Open Sans;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0.1px;
+  color: rgba(51, 51, 51, 1);
+}
+.customavatar {
+  width: 25px;
+  height: 25px;
+  background: #e0e0e0;
+  border-radius: 50px;
+  margin-right: 10px;
+  align-self: flex-start;
+}
+
+.comment {
+  display: flex;
+  flex-direction: row;
+  margin: 20px 32px;
+  align-items: center;
+}
+.createdByName {
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: rgba(51, 51, 51, 1);
+  margin-right: 16px;
+}
+.createdAtDate {
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: rgba(189, 189, 189, 1);
+  margin-right: 16px;
+}
+
+.createdAtTime {
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: rgba(189, 189, 189, 1);
+}
+.commentDescription {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  color: rgba(51, 51, 51, 1);
+  padding-top: 10px;
+}
+
+.commentHeader {
+  display: flex;
+  flex-direction: row;
+}
+.commentContent {
+  display: flex;
+  flex-direction: column;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  padding-left: 32px;
+  padding-right: 20px;
+  width: 100%;
+}
+.inputStyle {
+  color: var(--Gray-Black, #333) !important;
+  font-family: Roboto !important;
+  font-size: 12px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  line-height: 16px !important;
+  letter-spacing: 0.1px !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--Gray-Gray-03, #bdbdbd) !important;
+  background: var(--Gray-White, #fff);
+  min-height: 40px !important;
+}
+.labelStyle {
+  color: var(--Gray-Black, #333);
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.1px;
+  align-self: stretch;
+  margin-bottom: 4px;
+}
+.customButton {
+  font-family: Roboto !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 24px !important;
+  letter-spacing: 0.1px !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border-radius: 8px !important;
+  padding: 8px 16px 6px 16px;
+  background-color: #228dff;
+  border: unset;
+  color: white;
+}
+.footerRow {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 12px 16px;
+}
+.CommentAvatar {
+  width: 40px;
+  height: 40px;
+  background-color: #e0e0e0;
+  border-radius: 50px;
+}
+.BlueCircle {
+  width: 16px;
+  height: 16px;
+  background: rgba(34, 141, 255, 1);
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 8px;
+}
